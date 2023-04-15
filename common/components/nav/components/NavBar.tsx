@@ -49,7 +49,7 @@ const NavBar = ({ onHomePage = false }: { onHomePage?: boolean }) => {
       <motion.div
         variants={navBarAnimation}
         animate={animate}
-        className="-mb-10"
+        // className="-mb-10"
         transition={{
           duration: animate === 'from' ? 0 : 0.4,
           // ease: defaultEase,

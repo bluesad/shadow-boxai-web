@@ -17,9 +17,12 @@ const MainLayout = ({ children }: { children: JSX.Element }) => {
     const node = document.getElementById('__next');
     if (node) {
       node.classList.add('on-scrollbar');
+      node.classList.remove('overflow-hidden');
       if (router.pathname === '/shoes' && lastPathName.current === '/[slug]')
         node.scrollTop = lastScrollY.current;
-      else node.scrollTop = 0;
+      else if (router.pathname === '/register') {
+        node.classList.add('overflow-hidden');
+      } else node.scrollTop = 0;
     }
 
     return () => {
