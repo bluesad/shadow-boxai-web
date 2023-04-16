@@ -26,7 +26,7 @@ const NavBar = ({ onHomePage = false }: { onHomePage?: boolean }) => {
   // } = useRecoilValue(cartAtom);
 
   const [animate, setAnimate] = useState<'from' | 'to'>('from');
-  const [opened, setOpened] = useState(false);
+  // const [opened, setOpened] = useState(false);
 
   const { pathname } = useRouter();
 
@@ -45,7 +45,7 @@ const NavBar = ({ onHomePage = false }: { onHomePage?: boolean }) => {
 
   return (
     <>
-      <NavMenu opened={opened} setOpened={setOpened} />
+      {/* <NavMenu opened={opened} setOpened={setOpened} /> */}
       <motion.div
         variants={navBarAnimation}
         animate={animate}
@@ -128,13 +128,13 @@ const NavBar = ({ onHomePage = false }: { onHomePage?: boolean }) => {
               <AiOutlineShoppingCart />
             </button> */}
 
-            <button
+            {/* <button
               className="btn-icon ml-3 inline md:hidden"
               onClick={() => setOpened(true)}
               aria-label="Menu"
             >
               <AiOutlineMenu />
-            </button>
+            </button> */}
           </div>
         </nav>
       </motion.div>
