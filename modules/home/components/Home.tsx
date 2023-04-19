@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
@@ -11,6 +12,7 @@ import {
   createIcon,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 import {
   collectionListAnimation,
@@ -22,6 +24,7 @@ import CollectionList from './CollectionList';
 
 import Footer from '@/common/components/footer/components/Footer';
 import mainImage from '@/public/img/idea.gif';
+
 // import mainImage from '@/public/img/main.jpg';
 
 const headerStyle = 'text-5xl md:text-6xl xl:text-extra font-extrabold xl:-mt-12 -mt-5 md:-mt-8';
@@ -37,83 +40,87 @@ const Arrow = createIcon({
     />
   ),
 });
-const Home = () => (
-  <div className="flex h-full w-full items-center justify-center">
-    <motion.div
-      className="relative h-64 w-64 sm:h-96 sm:w-96"
-      variants={imageAnimation}
-      animate="to"
-    >
+const Home = () => {
+  const router = useRouter();
+  return (
+    <div className="flex h-full w-full items-center justify-center">
       <motion.div
-        className="absolute bottom-full ml-5 mb-0 md:ml-10 lg:-mb-5 xl:ml-24 2xl:mb-5 2xl:ml-48"
-        variants={textAnimation}
-        initial="from"
+        className="relative h-64 w-64 sm:h-96 sm:w-96"
+        variants={imageAnimation}
         animate="to"
       >
-        <h1 className={headerStyle}>Box AI,</h1>
-        <h1 className={`${headerStyle} hidden sm:block`}>the smart choice.</h1>
-        <h1 className={`${headerStyle} block sm:hidden`}>the smart</h1>
-        <h1 className={`${headerStyle} block sm:hidden`}>choice.</h1>
-      </motion.div>
-      <Image
-        layout="raw"
-        src={mainImage}
-        alt=""
-        className="h-full w-full object-cover object-center"
-        priority
-        // placeholder="blur"
-      />
-      <motion.div variants={collectionListAnimation} initial="from" animate="to">
-        <CollectionList />
-        <Stack
-          direction={'column'}
-          spacing={3}
-          align={'center'}
-          alignSelf={'center'}
-          position={'relative'}
+        <motion.div
+          className="absolute bottom-full ml-5 mb-0 md:ml-10 lg:-mb-5 xl:ml-24 2xl:mb-5 2xl:ml-48"
+          variants={textAnimation}
+          initial="from"
+          animate="to"
         >
-          <Button
-            // colorScheme={'gray'}
-            bg={'black'}
-            color={'white'}
-            rounded={'full'}
-            px={6}
-            size="lg"
-            // width={350}
-            // height={20}
-            // rightIcon={<ArrowForwardIcon />}
-            _hover={{
-              bg: 'blackAlpha.300',
-              color: 'black',
-            }}
+          <h1 className={headerStyle}>Box AI,</h1>
+          <h1 className={`${headerStyle} hidden sm:block`}>the smart choice.</h1>
+          <h1 className={`${headerStyle} block sm:hidden`}>the smart</h1>
+          <h1 className={`${headerStyle} block sm:hidden`}>choice.</h1>
+        </motion.div>
+        <Image
+          layout="raw"
+          src={mainImage}
+          alt=""
+          className="h-full w-full object-cover object-center"
+          priority
+          // placeholder="blur"
+        />
+        <motion.div variants={collectionListAnimation} initial="from" animate="to">
+          <CollectionList />
+          <Stack
+            direction={'column'}
+            spacing={3}
+            align={'center'}
+            alignSelf={'center'}
+            position={'relative'}
           >
-            立即体验
-          </Button>
-          <Box>
-            <Icon
-              as={Arrow}
-              color={useColorModeValue('gray.800', 'gray.300')}
-              w={71}
-              position={'absolute'}
-              right={-71}
-              top={'10px'}
-            />
-            <Text
-              fontSize={'lg'}
-              fontFamily={'Caveat'}
-              position={'absolute'}
-              right={'-125px'}
-              top={'-15px'}
-              transform={'rotate(10deg)'}
+            <Button
+              // colorScheme={'gray'}
+              bg={'black'}
+              color={'white'}
+              rounded={'full'}
+              px={6}
+              size="lg"
+              // width={350}
+              // height={20}
+              // rightIcon={<ArrowForwardIcon />}
+              _hover={{
+                bg: 'blackAlpha.300',
+                color: 'black',
+              }}
+              onClick={() => router.push('/login')}
             >
-              Starting at $15/mo
-            </Text>
-          </Box>
-        </Stack>
-        <Footer />
+              立即体验
+            </Button>
+            <Box>
+              <Icon
+                as={Arrow}
+                color={useColorModeValue('gray.800', 'gray.300')}
+                w={71}
+                position={'absolute'}
+                right={-71}
+                top={'10px'}
+              />
+              <Text
+                fontSize={'lg'}
+                fontFamily={'Caveat'}
+                position={'absolute'}
+                right={'-125px'}
+                top={'-15px'}
+                transform={'rotate(10deg)'}
+              >
+                Starting at $15/mo
+              </Text>
+            </Box>
+          </Stack>
+          <Footer />
+        </motion.div>
       </motion.div>
-    </motion.div>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Home;

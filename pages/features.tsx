@@ -3,17 +3,22 @@
 import { SVGProps } from 'react';
 import {
   Box,
+  Button,
   Container,
   Flex,
   Grid,
+  Heading,
+  Icon,
   Link,
   SimpleGrid,
+  Stack,
   Text,
   chakra,
   useColorModeValue,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { NextPage } from 'next';
+import { FcAbout, FcAssistant, FcCollaboration, FcDonate, FcManager } from 'react-icons/fc';
 
 import xiaohongshuImage from '@/public/img/xiaohongshu.png';
 import Sidebar from '@/common/components/sidebar/components/Sidebar';
@@ -141,6 +146,105 @@ const features: IFeature[] = [
   },
 ];
 
+interface CardProps {
+  heading: string;
+  description: string;
+  icon: React.ReactElement;
+  href: string;
+}
+
+const Card = ({ heading, description, icon, href }: CardProps) => {
+  return (
+    <Box
+      maxW={{ base: 'full', md: '275px' }}
+      w={'full'}
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      p={5}
+    >
+      <Stack align={'start'} spacing={2}>
+        <Flex
+          w={16}
+          h={16}
+          align={'center'}
+          justify={'center'}
+          color={'white'}
+          rounded={'full'}
+          bg={useColorModeValue('gray.100', 'gray.700')}
+        >
+          {icon}
+        </Flex>
+        <Box mt={2}>
+          <Heading size="md">{heading}</Heading>
+          <Text mt={1} fontSize={'sm'}>
+            {description}
+          </Text>
+        </Box>
+        <Button variant={'link'} colorScheme={'gray.600'} size={'sm'}>
+          Learn more →
+        </Button>
+        {/* <Link href="pricing" mt={4} fontSize="sm" color="gray.600">
+          Learn more →
+        </Link> */}
+      </Stack>
+    </Box>
+  );
+};
+
+export function GridListWith() {
+  return (
+    <>
+      {/* <Box p={4}> */}
+      {/* <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+        <Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'}>
+          Short heading
+        </Heading>
+        <Text color={'gray.600'} fontSize={{ base: 'sm', sm: 'lg' }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis obcaecati ut
+          cupiditate pariatur, dignissimos, placeat amet officiis.
+        </Text>
+      </Stack> */}
+
+      <Container maxW={'9xl'} mt={12}>
+        <Flex flexWrap="wrap" gridGap={6} justify="center">
+          <Card
+            heading={'微博'}
+            icon={<Icon as={FcAssistant} w={10} h={10} />}
+            description={'Lorem ipsum dolor sit amet catetur, adipisicing elit.'}
+            href={'#'}
+          />
+          <Card
+            heading={'公衆號'}
+            icon={<Icon as={FcCollaboration} w={10} h={10} />}
+            description={'Lorem ipsum dolor sit amet catetur, adipisicing elit.'}
+            href={'#'}
+          />
+          <Card
+            heading={'大衆點評'}
+            icon={<Icon as={FcDonate} w={10} h={10} />}
+            description={'Lorem ipsum dolor sit amet catetur, adipisicing elit.'}
+            href={'#'}
+          />
+          <Card
+            heading={'什麽值得買'}
+            icon={<Icon as={FcManager} w={10} h={10} />}
+            description={'Lorem ipsum dolor sit amet catetur, adipisicing elit.'}
+            href={'#'}
+          />
+          <Card
+            heading={'今日頭條'}
+            icon={<Icon as={FcAbout} w={10} h={10} />}
+            description={'Lorem ipsum dolor sit amet catetur, adipisicing elit.'}
+            href={'#'}
+          />
+        </Flex>
+      </Container>
+      {/* </Box> */}
+    </>
+  );
+}
+
 export const Features = () => (
   <Container maxW="9xl" p={{ base: 5, md: 10 }} mx="auto">
     <Grid
@@ -195,6 +299,7 @@ export const Features = () => (
             </Box>
           ))}
         </SimpleGrid>
+        <GridListWith />
       </div>
     </Grid>
   </Container>
