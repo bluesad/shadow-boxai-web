@@ -191,7 +191,6 @@ function GridBlurredBackdrop() {
   return (
     <Flex
       textAlign={'center'}
-      pt={10}
       justifyContent={'center'}
       direction={'column'}
       // width={'full'}
@@ -199,7 +198,7 @@ function GridBlurredBackdrop() {
     >
       <Box width={{ base: 'full', sm: 'lg', lg: 'xl' }} margin={'auto'}>
         <chakra.h1
-          py={5}
+          py={0}
           fontSize={48}
           fontFamily={'Work Sans'}
           fontWeight={'bold'}
@@ -281,9 +280,10 @@ const Profile = () => (
     >
       <Sidebar d={{ base: 'none', md: 'block' }} />
       <Container maxW="6xl" px="0">
-        <HStack justifyContent="space-evenly" alignItems="baseline">
+        <Stack direction={['column', 'row']} spacing="24px">
           <Stack
             w="17rem"
+            maxH="18rem"
             spacing={2}
             p={4}
             mr={16}
@@ -340,7 +340,7 @@ const Profile = () => (
             </Text>
           </Stack>
           <GridBlurredBackdrop />
-        </HStack>
+        </Stack>
       </Container>
     </Grid>
   </Container>

@@ -42,11 +42,11 @@ import Sidebar from '@/common/components/sidebar/components/Sidebar';
 
 const tabData = [
   {
-    label: 'Nigerian Jollof',
+    label: '歷史對話',
     content: 'Perhaps the greatest dish ever invented.',
   },
   {
-    label: 'Pounded Yam & Egusi',
+    label: '關鍵詞提示',
     content: 'Perhaps the surest dish ever invented but fills the stomach more than rice.',
   },
 ];

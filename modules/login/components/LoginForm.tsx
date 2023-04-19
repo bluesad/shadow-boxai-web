@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 // import { useState } from 'react';
 // import { useApolloClient } from '@apollo/client';
 import { useFormik } from 'formik';
 // import * as Yup from 'yup';
+import router from 'next/router';
 
 import LoaderButton from '@/common/components/button/components/LoaderButton';
 import InputComponent from '@/common/components/input/components/InputComponent';
@@ -61,6 +63,7 @@ const RegistrationForm = () => {
       //     setLoading(false);
       //   });
       passwordLogin({ username: values.username, password: values.password });
+      router.push('/features');
     },
     validate: (values) => {
       const errors: { [key: string]: string } = {};
