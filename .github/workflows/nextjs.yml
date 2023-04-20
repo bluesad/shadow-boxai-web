@@ -9,7 +9,9 @@ on:
   push:
     branches: ["develop"]
   pull_request:
-    branches: ["*"]
+    types: [opened, reopened]
+    branches:
+      - '*'
     
 
   # Allows you to run this workflow manually from the Actions tab
